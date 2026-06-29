@@ -4,14 +4,16 @@ export default function Header() {
   return (
     <header className="nav">
       <div className="container nav-inner">
-        <a className="brand" href="/">
+        <a className="brand" href="/" aria-label="BJ Electronics home">
           <span className="brand-mark">BJ</span>
           <span>BJ Electronics</span>
         </a>
         <nav className="nav-links" aria-label="Primary navigation">
           <a className="nav-link" href="/">Store</a>
+          <a className="nav-link" href="/product/p1">Products</a>
           <a className="nav-link" href="/checkout">Checkout</a>
           <a className="nav-link" href="/admin">Admin</a>
+          <a className="nav-link" href="/api/health">API</a>
           <ThemeToggle />
         </nav>
       </div>
