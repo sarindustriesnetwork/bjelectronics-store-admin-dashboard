@@ -5,7 +5,7 @@ export default function StoreHome() {
     <main style={{ fontFamily: 'Arial, sans-serif', background: '#f8fafc', minHeight: '100vh' }}>
       <nav style={{ padding: 24, background: '#111827', color: 'white', display: 'flex', justifyContent: 'space-between' }}>
         <strong>BJ Electronics</strong>
-        <a href="/admin" style={{ color: 'white' }}>Admin</a>
+        <span><a href="/admin" style={{ color: 'white', marginRight: 16 }}>Admin</a><a href="/checkout" style={{ color: 'white' }}>Checkout</a></span>
       </nav>
       <section style={{ padding: 48, background: '#1f2937', color: 'white' }}>
         <h1>Modern Electronics Store</h1>
@@ -19,6 +19,7 @@ export default function StoreHome() {
               <h3>{p.title}</h3>
               <p>Stock: {p.stock}</p>
               <strong>${p.price}</strong>
+              <p><a href={`/product/${p.id}`}>View product</a></p>
             </article>
           ))}
         </div>
