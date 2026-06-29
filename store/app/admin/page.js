@@ -1,37 +1,49 @@
-import { products } from '../../lib/products';
+import Header from '../../components/Header';
+import { products, stats } from '../../lib/products';
 
 export default function AdminPage() {
-  const totalStock = products.reduce((sum, item) => sum + item.stock, 0);
-  const totalValue = products.reduce((sum, item) => sum + item.price * item.stock, 0);
-
   return (
-    <main style={{ fontFamily: 'Arial, sans-serif', minHeight: '100vh', background: '#f8fafc', padding: 32 }}>
-      <section style={{ maxWidth: 1100, margin: '0 auto' }}>
-        <h1>BJ Electronics Admin</h1>
-        <p>Production admin route running at /admin from the same Hostinger deployment.</p>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(220px,1fr))', gap: 16, margin: '24px 0' }}>
-          <div style={{ background: 'white', border: '1px solid #ddd', borderRadius: 16, padding: 20 }}>
-            <strong>Total Products</strong>
-            <h2>{products.length}</h2>
-          </div>
-          <div style={{ background: 'white', border: '1px solid #ddd', borderRadius: 16, padding: 20 }}>
-            <strong>Total Stock</strong>
-            <h2>{totalStock}</h2>
-          </div>
-          <div style={{ background: 'white', border: '1px solid #ddd', borderRadius: 16, padding: 20 }}>
-            <strong>Inventory Value</strong>
-            <h2>${totalValue}</h2>
-          </div>
-        </div>
-        <div style={{ display: 'grid', gap: 12 }}>
-          {products.map((product) => (
-            <div key={product.id} style={{ background: 'white', border: '1px solid #ddd', borderRadius: 12, padding: 16, display: 'flex', justifyContent: 'space-between' }}>
-              <span>{product.title}</span>
-              <span>${product.price} • Stock {product.stock}</span>
+    <main className="app-shell">
+      <Header />
+      <div className="container admin-layout">
+        <aside className="panel sidebar">
+          <strong>Admin Console</strong>
+          <a href="/admin">Dashboard</a>
+          <a href="/api/products">Products API</a>
+          <a href="/api/health">Health Check</a>
+          <a href="/">Back to store</a>
+        </aside>
+        <section>
+          <div className="section-head">
+            <div>
+              <span className="eyebrow">Production dashboard</span>
+              <h1>BJ Electronics Admin</h1>
+              <p>Responsive admin view for inventory, revenue, and API status monitoring.</p>
             </div>
-          ))}
-        </div>
-      </section>
+            <a className="btn btn-primary" href="/api/status">API status</a>
+          </div>
+          <div className="dashboard-grid">
+            <div className="card"><span className="muted">Products</span><h2>{stats.products}</h2></div>
+            <div className="card"><span className="muted">Stock</span><h2>{stats.stock}</h2></div>
+            <div className="card"><span className="muted">Inventory value</span><h2>${stats.value}</h2></div>
+          </div>
+          <section className="section">
+            <div className="section-head">
+              <div><h2>Inventory</h2><p>Current product catalog synced with same-domain API.</p></div>
+            </div>
+            <div className="table">
+              <div className="table-row" style={{ fontWeight: 900 }}><span>Product</span><span>Price</span><span>Stock</span></div>
+              {products.map((product) => (
+                <div className="table-row" key={product.id}>
+                  <span>{product.icon} {product.title}</span>
+                  <span>${product.price}</span>
+                  <span>{product.stock} available</span>
+                </div>
+              ))}
+            </div>
+          </section>
+        </section>
+      </div>
     </main>
   );
 }
