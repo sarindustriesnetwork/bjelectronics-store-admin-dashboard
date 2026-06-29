@@ -5,19 +5,20 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// ROUTES
 const authRoutes = require('./src/routes/auth');
 const productRoutes = require('./src/routes/products');
 const orderRoutes = require('./src/routes/orders');
 const cartRoutes = require('./src/routes/cart');
+const paymentRoutes = require('./src/routes/payments');
 
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/cart', cartRoutes);
+app.use('/api/payments', paymentRoutes);
 
 app.get('/health', (req, res) => {
-  res.json({ status: 'ok', service: 'api', version: 'v1' });
+  res.json({ status: 'ok', version: 'v2' });
 });
 
 app.listen(4000, () => {
