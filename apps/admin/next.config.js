@@ -1,10 +1,7 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
+  basePath: '/admin',
   output: 'standalone',
-  reactStrictMode: true,
-  images: {
-    unoptimized: true
-  }
+  images: { unoptimized: true }
 };
 
 module.exports = nextConfig;
