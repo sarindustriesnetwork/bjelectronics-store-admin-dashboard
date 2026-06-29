@@ -11,6 +11,9 @@
     "build:api": "npm install --prefix store && npm run build --prefix store",
     "start:api": "npm run start --prefix store"
   },
+  "overrides": {
+    "postcss": "8.5.10"
+  },
   "engines": {
     "node": ">=20"
   },
