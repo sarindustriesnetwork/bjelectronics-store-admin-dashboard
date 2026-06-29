@@ -8,10 +8,14 @@
     "start": "next start -p ${PORT:-3000}"
   },
   "dependencies": {
+    "lucide-react": "latest",
     "next": "latest",
+    "postcss": "8.5.10",
     "react": "latest",
-    "react-dom": "latest",
-    "lucide-react": "latest"
+    "react-dom": "latest"
+  },
+  "overrides": {
+    "postcss": "8.5.10"
   },
   "engines": {
     "node": ">=20"
