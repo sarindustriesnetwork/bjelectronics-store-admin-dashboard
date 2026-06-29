@@ -1,14 +1,1 @@
-{
-  "name": "ecommerce-platform",
-  "private": true,
-  "workspaces": ["apps/*", "packages/*"],
-  "scripts": {
-    "dev": "turbo dev",
-    "build": "turbo build",
-    "lint": "turbo lint"
-  },
-  "devDependencies": {
-    "turbo": "latest",
-    "typescript": "^5.0.0"
-  }
-}
+{"name":"bjelectronics-production","private":true,"workspaces":["store","admin","api","apps/*","packages/*"],"scripts":{"build:store":"cd store && npm install && npm run build","build:admin":"cd admin && npm install && npm run build","start:api":"cd api && npm install && npm start"},"devDependencies":{}}
