@@ -2,7 +2,8 @@ import './globals.css';
 
 export const metadata = {
   title: 'BJ Electronics Store',
-  description: 'Production ecommerce storefront for BJ Electronics'
+  description: 'Professional ecommerce storefront, admin dashboard, and same-domain API for BJ Electronics',
+  viewport: 'width=device-width, initial-scale=1'
 };
 
 export default function RootLayout({ children }) {
