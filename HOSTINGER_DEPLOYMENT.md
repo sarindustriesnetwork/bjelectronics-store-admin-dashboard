@@ -1,35 +1,42 @@
 # Hostinger Native GitHub Deployment
 
-Use three separate Hostinger deployments.
+Use one Hostinger GitHub deployment for the production site.
 
-## API
-Root directory: /api
-Entry file: server.js
-Start command: npm start
-Test after deployment: https://api.bjelectronics.shop/health
+## Final production routes
 
-## Store
-Root directory: /store
+- Store: https://bjelectronics.shop
+- Admin: https://bjelectronics.shop/admin
+- API health: https://bjelectronics.shop/api/health
+- Products API: https://bjelectronics.shop/api/products
+- Orders API: https://bjelectronics.shop/api/orders
+
+## Hostinger settings
+
+Root directory: ./
 Framework: Next.js
-Node version: 20
+Node version: 20 or newer
 Build command: npm run build
 Start command: npm run start
-Environment variable: NEXT_PUBLIC_API_URL=https://api.bjelectronics.shop
 
-## Admin
-Root directory: /admin
-Framework: Next.js
-Node version: 20
-Build command: npm run build
-Start command: npm run start
-Environment variable: NEXT_PUBLIC_API_URL=https://api.bjelectronics.shop
+## Environment variables
 
-## Deployment order
-1. Deploy API first.
-2. Deploy Store second.
-3. Deploy Admin last.
+No environment variable is required for the basic production build.
 
-## Production domains
-Store: https://bjelectronics.shop
-Admin: https://bjelectronics.shop/admin
-API: https://api.bjelectronics.shop
+Optional future variables:
+- DATABASE_URL
+- JWT_SECRET
+- STRIPE_SECRET_KEY
+
+## Important
+
+Do not use npm run start:api in the build command.
+Do not deploy the old api folder separately for the same-domain /api route.
+The /api route is now served by the Next.js app inside /store/app/api.
+
+## Deployment result
+
+After a successful Hostinger deployment, open:
+
+https://bjelectronics.shop
+https://bjelectronics.shop/admin
+https://bjelectronics.shop/api/health
