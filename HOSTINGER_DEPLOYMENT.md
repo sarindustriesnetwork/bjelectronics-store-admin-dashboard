@@ -6,9 +6,12 @@ Use one Hostinger GitHub deployment for the production site.
 
 - Store: https://bjelectronics.shop
 - Admin: https://bjelectronics.shop/admin
+- Product page: https://bjelectronics.shop/product/p1
+- Checkout: https://bjelectronics.shop/checkout
 - API health: https://bjelectronics.shop/api/health
 - Products API: https://bjelectronics.shop/api/products
 - Orders API: https://bjelectronics.shop/api/orders
+- Status API: https://bjelectronics.shop/api/status
 
 ## Hostinger settings
 
@@ -32,6 +35,10 @@ Optional future variables:
 Do not use npm run start:api in the build command.
 Do not deploy the old api folder separately for the same-domain /api route.
 The /api route is now served by the Next.js app inside /store/app/api.
+
+## If the domain shows 403
+
+A 403 means the Hostinger server is denying access before the Next.js app is served. Check hPanel security, IP manager, country blocking, WAF, runtime status, and whether the latest deployment is marked live.
 
 ## Deployment result
 
