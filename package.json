@@ -1,20 +1,15 @@
 {
-  "name": "bjelectronics-production",
+  "name": "bjelectronics-hostinger-deploy",
   "private": true,
-  "workspaces": [
-    "store",
-    "admin",
-    "api"
-  ],
   "scripts": {
     "build": "npm run build:store",
     "start": "npm run start:store",
     "build:store": "npm install --prefix store && npm run build --prefix store",
     "start:store": "npm run start --prefix store",
-    "build:admin": "npm install --prefix admin && npm run build --prefix admin",
-    "start:admin": "npm run start --prefix admin",
-    "build:api": "npm install --prefix api && node -c api/server.js",
-    "start:api": "npm start --prefix api"
+    "build:admin": "npm install --prefix store && npm run build --prefix store",
+    "start:admin": "npm run start --prefix store",
+    "build:api": "npm install --prefix store && npm run build --prefix store",
+    "start:api": "npm run start --prefix store"
   },
   "engines": {
     "node": ">=20"
