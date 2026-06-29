@@ -1,5 +1,10 @@
-import { products } from '../../../lib/products';
+import { products, stats } from '../../../lib/products';
 
 export async function GET() {
-  return Response.json(products);
+  return Response.json({
+    ok: true,
+    total: products.length,
+    stats,
+    products
+  });
 }
