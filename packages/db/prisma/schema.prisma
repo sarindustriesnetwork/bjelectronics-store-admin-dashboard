@@ -1,0 +1,62 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String
+  role      Role     @default(CUSTOMER)
+  createdAt DateTime @default(now())
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  price       Float
+  stock       Int
+  images      String?
+  createdAt   DateTime @default(now())
+}
+
+model Order {
+  id        String   @id @default(cuid())
+  userId    String
+  total     Float
+  status    OrderStatus @default(PENDING)
+  createdAt DateTime @default(now())
+}
+
+model OrderItem {
+  id        String @id @default(cuid())
+  orderId   String
+  productId String
+  quantity  Int
+  price     Float
+}
+
+model Theme {
+  id          String @id @default(cuid())
+  name        String
+  layoutJSON  Json
+  createdAt   DateTime @default(now())
+}
+
+enum Role {
+  CUSTOMER
+  ADMIN
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  SHIPPED
+  CANCELLED
+}
