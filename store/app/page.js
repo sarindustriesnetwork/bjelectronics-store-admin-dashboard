@@ -17,13 +17,21 @@ export default function StoreHome() {
             </div>
           </div>
           <div className="hero-card">
-            <div className="metric-grid">
+            <span className="badge">Live business snapshot</span>
+            <div className="metric-grid" style={{ marginTop: 16 }}>
               <div className="metric"><strong>{stats.products}</strong><span>Live products</span></div>
               <div className="metric"><strong>{stats.stock}</strong><span>Items in stock</span></div>
               <div className="metric"><strong>${stats.value}</strong><span>Inventory value</span></div>
               <div className="metric"><strong>24/7</strong><span>API readiness</span></div>
             </div>
           </div>
+        </div>
+      </section>
+      <section className="section">
+        <div className="container grid">
+          <div className="card"><span className="badge">Fast delivery</span><h3>Optimized shopping flow</h3><p className="muted">Responsive product pages, checkout preview, and mobile-friendly navigation.</p></div>
+          <div className="card"><span className="badge">Secure</span><h3>Same-domain API</h3><p className="muted">Store, admin, and API routes are handled from one deployable production app.</p></div>
+          <div className="card"><span className="badge">Admin-ready</span><h3>Business dashboard</h3><p className="muted">Inventory metrics, product monitoring, and health check links are ready.</p></div>
         </div>
       </section>
       <section className="section" id="products">
@@ -52,6 +60,14 @@ export default function StoreHome() {
                 <a className="btn btn-primary" href={`/product/${p.id}`}>View product</a>
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+      <section className="section">
+        <div className="container hero-card">
+          <div className="section-head">
+            <div><span className="eyebrow">Production stack</span><h2>Ready for one-click Hostinger deployment</h2><p>The app is optimized for one domain: store at /, admin at /admin, and API at /api.</p></div>
+            <a className="btn btn-primary" href="/api/health">Check API</a>
           </div>
         </div>
       </section>
