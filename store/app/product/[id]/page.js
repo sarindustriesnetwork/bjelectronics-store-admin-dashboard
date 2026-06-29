@@ -1,3 +1,4 @@
+import Header from '../../../components/Header';
 import { products } from '../../../lib/products';
 
 export function generateStaticParams() {
@@ -8,17 +9,30 @@ export default function ProductPage({ params }) {
   const product = products.find((item) => item.id === params.id);
 
   if (!product) {
-    return <main style={{ padding: 32, fontFamily: 'Arial, sans-serif' }}><h1>Product not found</h1><a href="/">Back to store</a></main>;
+    return <main className="app-shell"><Header /><section className="container section"><h1>Product not found</h1><a className="btn" href="/">Back to store</a></section></main>;
   }
 
   return (
-    <main style={{ padding: 32, fontFamily: 'Arial, sans-serif', background: '#f8fafc', minHeight: '100vh' }}>
-      <a href="/">← Back to store</a>
-      <section style={{ maxWidth: 760, margin: '32px auto', background: 'white', border: '1px solid #ddd', borderRadius: 18, padding: 28 }}>
-        <h1>{product.title}</h1>
-        <p>Stock: {product.stock}</p>
-        <h2>${product.price}</h2>
-        <a href="/checkout" style={{ display: 'inline-block', background: '#111827', color: 'white', padding: '12px 18px', borderRadius: 12, textDecoration: 'none' }}>Checkout</a>
+    <main className="app-shell">
+      <Header />
+      <section className="container section">
+        <a className="nav-link" href="/">Back to store</a>
+        <div className="hero-grid" style={{ marginTop: 24 }}>
+          <div className="hero-card" style={{ display: 'grid', placeItems: 'center', minHeight: 360 }}>
+            <div style={{ fontSize: 120 }}>{product.icon}</div>
+          </div>
+          <div className="card" style={{ padding: 30 }}>
+            <span className="badge">{product.category}</span>
+            <h1 style={{ fontSize: 'clamp(34px,5vw,56px)', letterSpacing: '-.05em' }}>{product.title}</h1>
+            <p className="muted" style={{ lineHeight: 1.7 }}>{product.description}</p>
+            <p className="muted">Rating {product.rating} • {product.stock} units available</p>
+            <div className="price" style={{ margin: '18px 0' }}>${product.price}</div>
+            <div className="hero-actions">
+              <a className="btn btn-primary" href="/checkout">Buy now</a>
+              <a className="btn btn-soft" href="/api/products">View API</a>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
   );
